@@ -1,3 +1,4 @@
+socials
 function socials(selector, data) {
     // validation
 
@@ -16,3 +17,5 @@ function socials(selector, data) {
 }
 
 export { socials }
+
+develop
