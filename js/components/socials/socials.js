@@ -18,4 +18,4 @@ function socials(selector, data) {
 
 export { socials }
 
-develop
+
