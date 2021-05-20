@@ -15,13 +15,6 @@
   },
   "devDependencies": {
     "live-server": "^1.2.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Si-ghub/12-coming-soon.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Si-ghub/12-coming-soon/issues"
-  },
-  "homepage": "https://github.com/Si-ghub/12-coming-soon#readme"
+  }
+  
 }
