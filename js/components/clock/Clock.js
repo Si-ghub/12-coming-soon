@@ -2,8 +2,9 @@ class Clock {
     constructor(selector, targetDate) {
         this.selector = selector;
         this.targetDate = targetDate;
-        
+
         this.DOM = null;
+        this.allValuesDOM = null;
 
         this.init();
     }
@@ -14,6 +15,7 @@ class Clock {
         }
 
         this.render();
+        this.updateClock();
     }
 
     isValidSelector() {
@@ -88,7 +90,6 @@ class Clock {
             }
         }, 1000)
     }
-
 
     render() {
         const timeValues = this.formatTime(this.calcDeadline());
