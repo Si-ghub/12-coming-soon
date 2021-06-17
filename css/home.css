@@ -55,7 +55,29 @@
   color: var(--color-grey);
 }
 
-/* MAIN CONTENT SECTION */
+/* MAIN CONTENT SECTION Sioje dalyje susirasom tik pagrindini maino stiliu */
+main > .row-big > div {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.section-title {
+  font-weight: bold;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+.section-description {
+  font-size: 18px;
+  color: var(--color-grey);
+  line-height: 1.7em;
+}
+.section-description > a {
+  color: var(--color-secondary);
+  text-decoration: none;
+}
+.section-description > a:hover {
+  text-decoration: underline;
+}
 
 /* FOOTER SECTION */
 footer.container {
