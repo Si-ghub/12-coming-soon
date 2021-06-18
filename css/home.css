@@ -55,7 +55,7 @@
   color: var(--color-grey);
 }
 
-/* MAIN CONTENT SECTION Sioje dalyje susirasom tik pagrindini maino stiliu */
+/* MAIN CONTENT SECTION >>> Sioje dalyje susirasom tik pagrindini maino stiliu */
 main > .row-big > div {
   display: flex;
   flex-direction: column;
@@ -79,19 +79,38 @@ main > .row-big > div {
   text-decoration: underline;
 }
 
-/* FOOTER SECTION */
+ul {
+  list-style: none;
+}
+ul > li {
+  line-height: 20px;
+}
+
+ul > li::before {
+  display: inline-block;
+  content: '';
+  width: 20px;
+  height: 20px;
+  background-image: url(../img/check.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 10px;
+  transform: translateY(20%);
+}
+/* FOOTER SECTION >>> sioje dalyje susirasom socials, logo, h2 ir p stiliu |All rigts reserved|*/
 footer.container {
   padding-top: 0;
 }
 
 .socials {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   justify-content: center;
   flex-wrap: wrap;
   padding: 15px;
   border-bottom: 1px solid var(--color-light);
 }
+/* Faviconu stilius */
 .socials > .fa {
   color: var(--color-light);
   width: 40px;
@@ -106,4 +125,73 @@ footer.container {
 .socials > .fa:hover {
   background-color: var(--color-light);
   color: var(--color-primary);
+}
+/* #7 task: logo, h2 ir p (trys eilutes) */
+.bottom-texts {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.6em;
+  color: #fffb;
+}
+.bottom-texts a {
+  text-decoration: none;
+  color: var(--color-light);
+}
+.footer-logo {
+  height: 35px;
+  margin: 30px 0;
+  object-fit: contain;
+  object-position: center;
+}
+.multi-text {
+  display: flex;
+  justify-content: center;
+  gap: 0 30px;
+  text-transform: capitalize;
+}
+.multi-text > div {
+  position: relative;
+}
+.multi-text > div::before {
+  display: inline-block;
+  content: '';
+  width: 1px;
+  height: 15px;
+  background-color: var(--color-light);
+  position: absolute;
+  left: -15px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.multi-text > div:first-of-type::before {
+  display: none;
+}
+.bottom-texts > a {
+  color: var(--color-light);
+  text-decoration: none;
+}
+
+/* @media (max-width: 640px) {
+  .multi-text {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+}
+*/
+/* .rights {
+  border-left: solid 2px;
+  border-right: solid 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+} */
+@media (max-width: 640px) {
+  .multi-text {
+    flex-direction: column;
+  }
+  .multi-text > div::before {
+    display: none;
+  }
 }
