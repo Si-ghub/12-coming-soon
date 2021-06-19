@@ -11,7 +11,7 @@
 @import './components/clock.css';
 @import './components/form.css';
 @import './components/mouse.css';
-@import './components/progress-bar.css';
+@import './components/progress-bar-flex.css';
 
 /* CUSTOM STYLE BELOW THIS COMMENT */
 
@@ -79,24 +79,6 @@ main > .row-big > div {
   text-decoration: underline;
 }
 
-ul {
-  list-style: none;
-}
-ul > li {
-  line-height: 20px;
-}
-
-ul > li::before {
-  display: inline-block;
-  content: '';
-  width: 20px;
-  height: 20px;
-  background-image: url(../img/check.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  margin-right: 10px;
-  transform: translateY(20%);
-}
 /* FOOTER SECTION >>> sioje dalyje susirasom socials, logo, h2 ir p stiliu |All rigts reserved|*/
 footer.container {
   padding-top: 0;
