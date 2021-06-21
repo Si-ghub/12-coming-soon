@@ -6,7 +6,7 @@
 .progress-bar > .top {
   display: flex;
   justify-content: space-between;
-  font-size: 15px;
+  font-size: 20px;
 }
 .progress-bar > .bottom {
   display: inline-block;
