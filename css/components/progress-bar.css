@@ -25,3 +25,19 @@
   width: 90%;
   background-color: var(--color-primary);
 }
+.progress-bar .progress > .value {
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-primary);
+  animation-name: loading;
+  animation-duration: 3s;
+}
+
+@keyframes loading {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
