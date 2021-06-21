@@ -6,7 +6,7 @@
 .progress-bar > .top {
   display: flex;
   justify-content: space-between;
-  font-size: 15px;
+  font-size: 20px;
 }
 .progress-bar > .bottom {
   display: inline-block;
@@ -18,5 +18,20 @@
   display: inline-block;
   height: 100%;
   width: 90%;
+}
+.progress-bar .progress > .value {
+  height: 100%;
+  width: 100%;
   background-color: var(--color-primary);
+  animation-name: loading;
+  animation-duration: 3s;
+}
+
+@keyframes loading {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }

@@ -1,0 +1,10 @@
+.btn {
+  background-color: #ea1e63;
+  line-height: 40px;
+  display: inline-block;
+  float: right;
+  padding: 0 20px;
+  color: white;
+  border-radius: 3px;
+  border: none;
+}
