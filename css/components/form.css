@@ -1,7 +1,7 @@
 form {
   display: inline-block;
   width: 100%;
-  flex-direction: column;
+  /* flex-direction: column; */
   gap: 10px;
 }
 form > input {
@@ -9,12 +9,10 @@ form > input {
   line-height: 40px;
   border: none;
   border-bottom: 2px solid lightgrey;
-}
-form > #text {
   width: 45%;
 }
-form > #email {
-  width: 45%;
+
+form > input:nth-of-type(2) {
   float: right;
 }
 
