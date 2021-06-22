@@ -11,12 +11,18 @@ form > input {
   border: none;
   border-bottom: 2px solid lightgrey;
 }
+form > #text {
+  width: 45%;
+}
+form > #email {
+  width: 45%;
+  float: right;
+}
 
 form > textarea {
   width: 100%;
   margin-bottom: 20px;
   line-height: 40px;
-
   border: none;
   border-bottom: 2px solid lightgrey;
 }
