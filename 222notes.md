@@ -124,3 +124,58 @@ ul > li::before {
   background-color: var(--color-primary);
 }
 ```
+
+**Form ir button** (pirmas variantas)
+```html
+<form>
+<input id="text" type="text" placeholder="Name" required>
+<input id="email" type="email" placeholder="Email" required>
+<textarea name="message" id="message" placeholder="Message" required></textarea>
+<button class="btn" type="button">Send Messsage</button>
+</form>
+```
+form.css filas
+```css
+form {
+  display: inline-block;
+  width: 100%;
+  /* flex-direction: column; */
+  gap: 10px;
+}
+form > input {
+  margin-bottom: 20px;
+  line-height: 40px;
+  border: none;
+  border-bottom: 2px solid lightgrey;
+  width: 45%;
+}
+
+form > input:nth-of-type(2) {
+  float: right;
+}
+
+form > textarea {
+  width: 100%;
+  margin-bottom: 20px;
+  line-height: 40px;
+  border: none;
+  border-bottom: 2px solid lightgrey;
+}
+
+```
+button.css
+```css
+.btn {
+  background-color: #ea1e63;
+  line-height: 40px;
+  display: inline-block;
+  float: right;
+  padding: 0 20px;
+  color: white;
+  border-radius: 3px;
+  border: none;
+  box-shadow: 1px 1px 2px 1px darkgrey;
+  /* letter-spacing: 1px; */
+}
+
+```
