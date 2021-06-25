@@ -232,9 +232,9 @@ isValidData() {
     }
 ```
 
-// jei bent vienas is ju nevalidus, tai baigiam darba
+// jei bent vienas is ju nevalidus, tai baigiam darba (return false;)
 
-    - susirandame reikiama vieta, pagal pateikta selector
+- susirandame reikiama vieta, pagal pateikta selector
 
 ```js
 this.DOM = document.querySelector(this.selector);
@@ -244,10 +244,10 @@ if (!this.DOM) {
 }
 ```
 
-      - jeigu vieta neegzistuoja, tai baigiam darba
+- jeigu vieta neegzistuoja, tai baigiam darba (in case of return false;)
 
-    // generuojame turini ir istatome i reikiama vieta
-    render() {
+// generuojame turini ir istatome i reikiama vieta
+render() {
 
 ```js
 render() {
