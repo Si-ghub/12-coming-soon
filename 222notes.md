@@ -190,7 +190,11 @@ button.css
 
 **2021 06 25**
 Su js sugeneruojam progress-bar
+
+```js
 init() {
+  {
+```
 
 // patikrinti, ar validus selector
 
