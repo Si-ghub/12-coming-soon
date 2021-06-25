@@ -243,7 +243,8 @@ if (!this.DOM) {
     render() {
 
 ```js
-let HTML = '';
+render() {
+        let HTML = '';
 
         for (const bar of this.data) {
             HTML += `<div class="progress-bar">
@@ -261,8 +262,8 @@ let HTML = '';
 
         this.DOM.innerHTML += HTML;
     }
-
 }
+
 ```
 
 index.html file istrinam
