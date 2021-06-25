@@ -189,6 +189,13 @@ button.css
 ```
 
 **2021 06 25**
+Objektiniss programavimas. Objektas sudarytas is 2 elementu: selektoriaus ir duomenu.
+
+- Komponentai komponentas pasiima duomenis
+- Duomenys
+- Home viska mixuoja: kur istatyti ir kuri duomenu rinkini panaudoti
+  pvz.: ieskok (left-column) ir panaudok progressBar
+
 Su js sugeneruojam progress-bar
 
 ```js
