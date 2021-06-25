@@ -126,15 +126,23 @@ ul > li::before {
 ```
 
 **Form ir button** (pirmas variantas)
+
 ```html
 <form>
-<input id="text" type="text" placeholder="Name" required>
-<input id="email" type="email" placeholder="Email" required>
-<textarea name="message" id="message" placeholder="Message" required></textarea>
-<button class="btn" type="button">Send Messsage</button>
+  <input id="text" type="text" placeholder="Name" required />
+  <input id="email" type="email" placeholder="Email" required />
+  <textarea
+    name="message"
+    id="message"
+    placeholder="Message"
+    required
+  ></textarea>
+  <button class="btn" type="button">Send Messsage</button>
 </form>
 ```
+
 form.css filas
+
 ```css
 form {
   display: inline-block;
@@ -161,9 +169,10 @@ form > textarea {
   border: none;
   border-bottom: 2px solid lightgrey;
 }
-
 ```
+
 button.css
+
 ```css
 .btn {
   background-color: #ea1e63;
@@ -177,5 +186,115 @@ button.css
   box-shadow: 1px 1px 2px 1px darkgrey;
   /* letter-spacing: 1px; */
 }
+```
 
+**2021 06 25**
+Su js sugeneruojam progress-bar
+init() {
+
+// patikrinti, ar validus selector
+
+```js
+if (!this.isValidSelector() || !this.isValidData()) {
+  console.error('ERROR: nepraejo pirmines patikros');
+  return false;
+}
+
+isValidSelector() {
+        if (typeof this.selector !== 'string' ||
+            this.selector === '') {
+            return false;
+        }
+        return true;
+    }
+```
+
+// patikrinti, ar validus data
+
+```js
+isValidData() {
+        if (!Array.isArray(this.data) ||
+            this.data.length === 0) {
+            return false;
+        }
+        return true;
+    }
+```
+
+// jei bent vienas is ju nevalidus, tai baigiam darba
+
+    - susirandame reikiama vieta, pagal pateikta selector
+
+```js
+this.DOM = document.querySelector(this.selector);
+if (!this.DOM) {
+  console.error('ERROR: nerestas elementas, pagal duota selector');
+  return false;
+}
+```
+
+      - jeigu vieta neegzistuoja, tai baigiam darba
+
+    // generuojame turini ir istatome i reikiama vieta
+    render() {
+
+```js
+let HTML = '';
+
+        for (const bar of this.data) {
+            HTML += `<div class="progress-bar">
+                        <div class="top">
+                            <div class="title">${bar.title}</div>
+                            <div class="value">${bar.value}%</div>
+                        </div>
+                        <div class="bottom">
+                            <div class="progress" style="width: ${bar.value}%;">
+                                <div class="value"></div>
+                            </div>
+                        </div>
+                    </div>`;
+        }
+
+        this.DOM.innerHTML += HTML;
+    }
+
+}
+```
+
+index.html file istrinam
+
+```html
+<div class="progress-bar">
+  <div class="top">
+    <div class="title">UX Design</div>
+    <div class="value">90%</div>
+  </div>
+  <div class="bottom">
+    <div class="progress" style="width: 90%;">
+      <div class="value"></div>
+    </div>
+  </div>
+</div>
+<div class="progress-bar">
+  <div class="top">
+    <div class="title">Web Design</div>
+    <div class="value">86%</div>
+  </div>
+  <div class="bottom">
+    <div class="progress" style="width: 86%;">
+      <div class="value"></div>
+    </div>
+  </div>
+</div>
+<div class="progress-bar">
+  <div class="top">
+    <div class="title">Web Development</div>
+    <div class="value">86%</div>
+  </div>
+  <div class="bottom">
+    <div class="progress" style="width: 86%;">
+      <div class="value"></div>
+    </div>
+  </div>
+</div>
 ```
