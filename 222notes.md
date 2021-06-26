@@ -189,9 +189,9 @@ button.css
 ```
 
 **2021 06 25 Progress-bar generavimas**
-Objektiniss programavimas. Objektas sudarytas is 2 elementu: selektoriaus ir duomenu.
+Objektinis programavimas. Objektas sudarytas is 2 elementu: selektoriaus ir duomenu.
 
-- Komponentai komponentas pasiima duomenis
+- Komponentai - komponentas pasiima duomenis
 - Duomenys
 - Home viska mixuoja: kur istatyti ir kuri duomenu rinkini panaudoti
   pvz.: ieskok (left-column) ir panaudok progressBar
