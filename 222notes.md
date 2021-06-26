@@ -310,3 +310,275 @@ index.html file istrinam
   </div>
 </div>
 ```
+
+**2021 06 26**
+Trumpesnis Form.js validacijos variantas, bet kol kas dar per sudetingas :)
+index.html file reikia susikurti custom atributus: data-validation (gali buti skirtingi data-)prie form, kad galetume identifikuoti.
+
+```html
+Pirma form
+<form>
+  <input
+    data-validation="email"
+    id="subscribe_email"
+    type="email"
+    placeholder="Type your email"
+    required
+  />
+  <button class="btn" type="submit">Subscribe now</button>
+</form>
+Antra form
+<form>
+  <input
+    data-validation="name"
+    id="name"
+    type="text"
+    placeholder="Name"
+    required
+  />
+  <input
+    data-validation="email"
+    id="email"
+    type="email"
+    placeholder="Email"
+    required
+  />
+  <textarea
+    data-validation="text"
+    id="message"
+    placeholder="Message"
+    required
+    maxlength="20"
+  ></textarea>
+  <button class="btn" type="submit">Send message</button>
+</form>
+```
+
+```js
+home.js file eksportuojame ir susirandame new Form (bus du, riekia abu ir susirasti)
+pirmiausiai Form.js turime padaryti export {Form}, tada home.js import {Form} - nurodome kelia kur yra failas. Siuo atveju data filo nera,todel turesime daryti validacijas.
+```
+
+```js
+class Form {
+  constructor(selector) {
+    this.selector = selector;
+
+    this.formDOM = null;
+    this.allInputsDOM = [];
+    this.submitButtonDOM = null;
+    this.validations = {
+      name: this.isValidName,
+      email: this.isValidEmail,
+      text: this.isValidText,
+    };
+
+    this.init();
+  }
+
+  init() {
+    if (!this.isValidSelector()) {
+      console.error('ERROR: nevalidus selector');
+      return false;
+    }
+
+    this.formDOM = document.querySelector(this.selector);
+    if (!this.formDOM) {
+      console.error('ERROR: nerastas formos elementas');
+      return false;
+    }
+
+    this.allInputsDOM = this.formDOM.querySelectorAll('input, textarea');
+    this.submitButtonDOM = this.formDOM.querySelector('button[type="submit"]');
+
+    this.addEvents();
+  }
+
+  isValidSelector() {
+    return true;
+  }
+
+  isValidName(name) {
+    if (typeof name !== 'string' || name === '') {
+      return false;
+    }
+    return true;
+  }
+
+  isValidEmail(email) {
+    if (typeof email !== 'string' || email === '') {
+      return false;
+    }
+    return true;
+  }
+
+  isValidText(text) {
+    if (typeof text !== 'string' || text === '') {
+      return false;
+    }
+    return true;
+  }
+
+  addEvents() {
+    this.submitButtonDOM.addEventListener('click', (event) => {
+      // submit mygtuko paspaudimo metu reikia isjungti default veikima
+      event.preventDefault();
+
+      // issitraukti is visu formos lauku informacija
+      // eiti per visus laukus ir atpazinus informacijos tipa atlikti tos informacijos validacija
+      let allGood = true;
+
+      for (const inputDOM of this.allInputsDOM) {
+        // sukuriam taisykle
+        const validationRule = inputDOM.dataset.validation;
+        const value = inputDOM.value;
+
+        if (!this.validations[validationRule](value)) {
+          allGood = false;
+          break;
+        }
+      }
+
+      // jei patikrinus visus laukus, nerasta nei vienos klaidos, tai "siunciam pranesima"
+      // jei patikrinus visus laukus, nerasta bent viena klaida, tai parodome visu klaidos pranesimus (kol kas, viskas pateikiama i console)
+      console.log('All good:', allGood);
+    });
+  }
+}
+
+export { Form };
+```
+
+Paprastesnis variantas su komentarais:
+
+```js
+class Form {
+  constructor(selector) {
+    this.selector = selector;
+
+    this.DOM = null;
+    this.allInputsDOM = [];
+    this.submitButtonDOM = null;
+
+    this.init();
+  }
+
+  init() {
+    // patikrinti ar validus selector
+    // jei ne, baigiam darba
+    if (!this.isValidSelector()) {
+      return false;
+    }
+
+    // susirasti DOM elementa
+    this.DOM = document.querySelector(this.selector);
+
+    // jei rasti napavyksta, baigiam darba
+    if (!this.DOM) {
+      console.error('ERROR: nerestas elementas, pagal duota selector');
+      return false;
+    }
+
+    // susirasti visus formos laukus: input, textarea
+    this.allInputsDOM = this.DOM.querySelectorAll('input, textarea');
+
+    // susirasti formos submit mygtuka
+    this.submitButtonDOM = this.DOM.querySelector('button');
+
+    this.addEvents();
+  }
+
+  isValidSelector() {
+    if (typeof this.selector !== 'string' || this.selector === '') {
+      console.error('ERROR: Selector must be a non empty string');
+      return false;
+    }
+    return true;
+  }
+  isValidEmail(email) {
+    if (
+      typeof email !== 'string' ||
+      email.length < 6 ||
+      email.indexOf('@') === -1 || //reiskia @ stringe nerasta(-1)
+      email[0] === '@' || // pirma string reiksme yra@
+      email.slice(-4).indexOf('@') > -1 || //paima 4 paskutinius email simbolius ir iesko @
+      this.countSimbols(email, '@') > 1
+    ) {
+      //tikrina kiek stringe yra atitinkamu simboliu!
+      return false;
+    }
+    return true;
+  }
+
+  // jei patikrinus visus laukus, nerasta nei vienos klaidos, tai "siunciam pranesima"
+  countSimbols(text, letter) {
+    let count = 0;
+
+    for (const t of text) {
+      if (t === letter) {
+        count++;
+      }
+    }
+
+    return count;
+  }
+  isValidName(firstName) {
+    if (
+      firstName === undefined ||
+      typeof firstName !== 'string' ||
+      firstName.length < 2 ||
+      !this.isUpperCase(firstName[0])
+    ) {
+      return false;
+    }
+    return true;
+  }
+  isUpperCase(letter) {
+    return letter === letter.toUpperCase();
+  }
+  isValidMessage(msg) {
+    if (typeof msg !== 'string' || msg === '') {
+      return false;
+    }
+    return true;
+  }
+
+  // uzregistruojame mygtuko paspaudimo ivyki
+  addEvents() {
+    this.submitButtonDOM.addEventListener('click', (e) => {
+      // submit mygtuko paspaudimo metu reikia isijungti default veikima
+      e.preventDefault();
+      let allGood = true;
+
+      // eiti per visus laukus ir atpazinus informacijos tipa atlikti tos informacijos validacija
+      for (let element of this.allInputsDOM) {
+        const validationRule = element.dataset.validation;
+
+        if (validationRule === 'email') {
+          if (this.isValidEmail(element.value) === false) {
+            allGood = false;
+            break;
+          }
+        }
+        if (validationRule === 'name') {
+          if (this.isValidName(element.value) === false) {
+            allGood = false;
+            break;
+          }
+        }
+        if (validationRule === 'text') {
+          if (this.isValidMessage(element.value) === false) {
+            allGood = false;
+            break;
+          }
+        }
+      }
+
+      // jei patikrinus visus laukus, nerasta nei viena klaida, tai parodome visus klaidos pranesimus (kol kas, viskas pateikiama i console)
+      console.log('All Good?', allGood);
+    });
+  }
+}
+
+export { Form };
+```
