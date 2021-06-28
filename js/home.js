@@ -1,8 +1,9 @@
 // IMPORT
 import { Clock } from "./components/clock/Clock.js";
+import { Form } from "./components/form/Form.js";
 import { Progressbar } from "./components/progress-bar/ProgressBar.js";
 import { SocialsOOP } from "./components/socials/SocialsOOP.js"
-import { Form } from "./components/form/Form.js";
+import { Toast } from "./components/toast/Toast.js";
 import { socials } from "./components/socials/socials.js";
 import { clockData } from "./data/clockData.js";
 import { progressBarData } from "./data/progressBarData.js";
@@ -10,6 +11,16 @@ import { socialsData } from "./data/socialsData.js";
 
 
 // EXECUTION
+const toast = new Toast;
+// toast.success('Tau pavyko!');
+// toast.info('Pranesimas apie kazka!');
+// toast.warning('Tu cia ziurek..!');
+
+// toast.error('Yra klaida!', 'Nauja antraste');
+toast.error('Yra klaida!');
+// toast.error();
+
+
 new Clock('#clock_1', clockData);
 //new Clock(485545);
 // socials('footer .socials', socialsData);

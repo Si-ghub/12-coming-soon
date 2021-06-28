@@ -49,7 +49,7 @@ class Form {
             email.indexOf('@') === -1 || //reiskia @ stringe nerasta(-1)
             email[0] === '@' ||         // pirma string reiksme yra@
             email.slice(-4).indexOf('@') > -1 || //paima 4 paskutinius email simbolius ir iesko @
-            this.countSimbols(email, '@') > 1) { //tikrina kiek stringe yra atitinkamu simboliu!
+            this.countSimbols(email, '@') > 1) { //tikrina kiek stringe yra atitinkamu @ simboliu!
             return false;
         }
         return true;
