@@ -582,3 +582,80 @@ class Form {
 
 export { Form };
 ```
+
+**Toast variantas**
+home.js
+
+```js
+// EXECUTION
+const toast = new Toast();
+// toast.success('Tau pavyko!');
+// toast.info('Pranesimas apie kazka!');
+// toast.warning('Tu cia ziurek..!');
+
+// toast.error('Yra klaida!', 'Nauja antraste');
+toast.error('Yra klaida!');
+// toast.error();
+```
+
+Toast.js file
+
+```js
+hide() {
+        this.DOM.classList.add('hide');
+    }
+
+    success(msg, title = 'Success!') {
+        if (!msg) {
+            return false;
+        }
+
+        this.show();
+        this.DOM.dataset.state = 'success';
+        this.messageDOM.innerText = msg;
+        this.titleDOM.innerText = title;
+    }
+
+    info(msg, title = 'Information!') {
+        if (!msg) {
+            return false;
+        }
+
+        this.show();
+        this.DOM.dataset.state = 'info';
+        this.messageDOM.innerText = msg;
+        this.titleDOM.innerText = title;
+    }
+
+    warning(msg, title = 'Warning!') {
+        if (!msg) {
+            return false;
+        }
+
+        this.show();
+        this.DOM.dataset.state = 'warning';
+        this.messageDOM.innerText = msg;
+        this.titleDOM.innerText = title;
+    }
+
+    error(msg, title = 'Error!') {
+        if (!msg) {
+            return false;
+        }
+
+        this.show();
+        this.DOM.dataset.state = 'error';
+        this.messageDOM.innerText = msg;
+        this.titleDOM.innerText = title;
+    }
+
+    addEvents() {
+        this.closeDOM.addEventListener('click', () => {
+            this.hide();
+        })
+    }
+}
+
+export { Toast }
+
+```
