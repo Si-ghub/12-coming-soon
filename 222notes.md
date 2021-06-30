@@ -659,3 +659,16 @@ hide() {
 export { Toast }
 
 ```
+
+**2021 06 30**
+Uzduotis su scroll baru
+
+1. kaip aukstai esu nuscrollines
+2. ekrano aukstis
+3. elemento aukstis
+4. kaip aukstai yra elementas viso turinio atzvilgiu
+
+A) 1+2 = ekrano apacios aukscio pozicija
+B) 3+4 = elemento apacios aukscio pozicija
+
+A > B { elementas yra pilnai matomas, galim animuoti }
