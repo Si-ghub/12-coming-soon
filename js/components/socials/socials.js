@@ -1,4 +1,3 @@
-socials
 function socials(selector, data) {
     // validation
 
